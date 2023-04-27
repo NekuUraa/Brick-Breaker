@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _playerSpeed = 2.5f;
+    public float _playerSpeed = 2.5f;
     public static bool _gameplay;
     void Start()
     {

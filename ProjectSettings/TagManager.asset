@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - UpBorder
+  - LeftBorder
+  - RightBorder
+  - DownBorder
+  - Rando
   layers:
   - Default
   - TransparentFX
