@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
@@ -11,6 +12,8 @@ public class BallMovement : MonoBehaviour
     private bool _dirX;
     private bool _dirZ;
     private Vector3 rotate;
+
+    public GameObject prefabRando;
 
     public static bool noLongerHuman = false;
 
@@ -72,7 +75,10 @@ public class BallMovement : MonoBehaviour
 
         if(other.tag == "Rando")
         {
-            other.transform.parent = transform;
+            //other.transform.parent = transform;
+            other.gameObject.SetActive(false);
+            GameObject temp = Instantiate(prefabRando,other.transform.position,other.transform.rotation);
+            temp.transform.parent = gameObject.transform;
         }
 
         if(other.tag == "Player")
