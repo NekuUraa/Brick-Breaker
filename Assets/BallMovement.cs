@@ -12,6 +12,8 @@ public class BallMovement : MonoBehaviour
     private bool _dirZ;
     private Vector3 rotate;
 
+    public static bool noLongerHuman = false;
+
     void Start()
     {
         _dirX = true;
