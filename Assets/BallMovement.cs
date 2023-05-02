@@ -76,15 +76,16 @@ public class BallMovement : MonoBehaviour
         if(other.tag == "Rando")
         {
             //other.transform.parent = transform;
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
             GameObject temp = Instantiate(prefabRando,other.transform.position,other.transform.rotation);
+            other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
         }
 
         if(other.tag == "Player")
         {
             _dirZ = false;
-
+            SoundManager.instance.PlaySound(Random.Range(0,3));
             rotate = new Vector3(10, 0, 0);
         }
 
