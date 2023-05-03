@@ -10,6 +10,7 @@ TagManager:
   - RightBorder
   - DownBorder
   - Rando
+  - NavMeshWall
   layers:
   - Default
   - TransparentFX

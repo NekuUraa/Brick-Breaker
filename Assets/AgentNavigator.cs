@@ -10,6 +10,7 @@ public class AgentNavigator : MonoBehaviour
     private NavMeshAgent myAgent;
     public GameObject goalDestination;
     public GameObject ball;
+    public float _speed;
 
     public bool noLongerAI = false;
 
@@ -18,6 +19,8 @@ public class AgentNavigator : MonoBehaviour
     void Start()
     {
          myAgent = GetComponent<NavMeshAgent>();
+        _speed = Random.Range(3f, 5f);
+        myAgent.speed = _speed;
     }
 
     // Update is called once per frame
@@ -33,4 +36,8 @@ public class AgentNavigator : MonoBehaviour
             myAgent.enabled = !myAgent.enabled;
         }
     }
+
+    
+
+
 }
