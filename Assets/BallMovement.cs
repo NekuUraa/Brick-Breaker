@@ -17,6 +17,8 @@ public class BallMovement : MonoBehaviour
 
     public static bool noLongerHuman = false;
 
+    public Animator raquette_anim;
+
     void Start()
     {
         _dirX = true;
@@ -84,6 +86,7 @@ public class BallMovement : MonoBehaviour
 
         if(other.tag == "Player")
         {
+            raquette_anim.SetTrigger("Ball_touch");
             _dirZ = false;
             SoundManager.instance.PlaySound(Random.Range(0,3));
             rotate = new Vector3(10, 0, 0);
