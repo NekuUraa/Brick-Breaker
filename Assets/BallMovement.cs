@@ -14,6 +14,7 @@ public class BallMovement : MonoBehaviour
     private Vector3 rotate;
 
     public GameObject prefabRando;
+    public GameObject prefabRando2;
 
     public static bool noLongerHuman = false;
 
@@ -84,7 +85,16 @@ public class BallMovement : MonoBehaviour
             temp.transform.parent = gameObject.transform;
         }
 
-        if(other.tag == "Player")
+        if (other.tag == "Rando2")
+        {
+            //other.transform.parent = transform;
+            //other.gameObject.SetActive(false);
+            GameObject temp = Instantiate(prefabRando2, other.transform.position, other.transform.rotation);
+            other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
+            temp.transform.parent = gameObject.transform;
+        }
+
+        if (other.tag == "Player")
         {
             raquette_anim.SetTrigger("Ball_touch");
             _dirZ = false;
