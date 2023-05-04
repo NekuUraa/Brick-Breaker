@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using TMPro;
 
 public class BallMovement : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class BallMovement : MonoBehaviour
 
     public Animator raquette_anim;
 
+    public int myScore = 0;
+    public TMP_Text score;
+
     void Start()
     {
         _dirX = true;
@@ -33,6 +37,7 @@ public class BallMovement : MonoBehaviour
     {
         Move();
         transform.Rotate(rotate);
+        score.SetText(""+myScore);
     }
 
     public void Move()
@@ -74,6 +79,7 @@ public class BallMovement : MonoBehaviour
             other.transform.parent = transform;
             _dirZ = !_dirZ;
             rotate = new Vector3(-10, 0, 0);
+            myScore += 10;
         }
 
         if(other.tag == "Rando")
@@ -83,6 +89,7 @@ public class BallMovement : MonoBehaviour
             GameObject temp = Instantiate(prefabRando,other.transform.position,other.transform.rotation);
             other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
+            myScore += 2;
         }
 
         if (other.tag == "Rando2")
@@ -92,6 +99,7 @@ public class BallMovement : MonoBehaviour
             GameObject temp = Instantiate(prefabRando2, other.transform.position, other.transform.rotation);
             other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
+            myScore += 2;
         }
 
         if (other.tag == "Player")
@@ -124,6 +132,7 @@ public class BallMovement : MonoBehaviour
             transform.position = new Vector3(0, 1.29f, 0);
             _dirX= true;
             _dirZ= true;
+            myScore -= 10;
         }
     }
 
