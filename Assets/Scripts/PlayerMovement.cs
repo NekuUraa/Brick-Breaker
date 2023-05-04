@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float _playerSpeed = 2.5f;
+    public float _playerSpeed = 4f;
     public static bool _gameplay;
     void Start()
     {
@@ -20,14 +20,23 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         
-            if (Input.GetKey(KeyCode.Q))
-            {
-                transform.position = new Vector3(transform.position.x - (_playerSpeed * Time.deltaTime), transform.position.y, transform.position.z);
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.position = new Vector3(transform.position.x + (_playerSpeed * Time.deltaTime), transform.position.y, transform.position.z);
-            }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.position = new Vector3(transform.position.x - (_playerSpeed * Time.deltaTime), transform.position.y, transform.position.z);
         }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position = new Vector3(transform.position.x + (_playerSpeed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _playerSpeed= 10f;
+        }
+        else
+        {
+            _playerSpeed = 4f;
+        }
+    }
 }

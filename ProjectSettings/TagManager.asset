@@ -12,6 +12,8 @@ TagManager:
   - Rando
   - NavMeshWall
   - Rando2
+  - Rando3
+  - Rando4
   layers:
   - Default
   - TransparentFX

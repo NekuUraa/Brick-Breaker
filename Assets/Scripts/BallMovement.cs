@@ -25,6 +25,8 @@ public class BallMovement : MonoBehaviour
     public int myScore = 0;
     public TMP_Text score;
 
+
+
     void Start()
     {
         _dirX = true;
@@ -39,6 +41,10 @@ public class BallMovement : MonoBehaviour
         Move();
         transform.Rotate(rotate);
         score.SetText(""+myScore);
+        if (myScore < 0)
+        {
+            myScore= 0;
+        }
     }
 
     public void Move()
@@ -89,7 +95,7 @@ public class BallMovement : MonoBehaviour
             //other.transform.parent = transform;
             //other.gameObject.SetActive(false);
             GameObject temp = Instantiate(prefabRando,other.transform.position,other.transform.rotation);
-            other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
+            other.gameObject.transform.position = new Vector3(-24.57f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
@@ -100,7 +106,29 @@ public class BallMovement : MonoBehaviour
             //other.transform.parent = transform;
             //other.gameObject.SetActive(false);
             GameObject temp = Instantiate(prefabRando2, other.transform.position, other.transform.rotation);
-            other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
+            other.gameObject.transform.position = new Vector3(-24.57f, 1.35f, Random.Range(9.45f, -6.6f));
+            temp.transform.parent = gameObject.transform;
+            myScore += 2;
+            Ui_Score.SetTrigger("Points");
+        }
+
+        if (other.tag == "Rando3")
+        {
+            //other.transform.parent = transform;
+            //other.gameObject.SetActive(false);
+            GameObject temp = Instantiate(prefabRando, other.transform.position, other.transform.rotation);
+            other.gameObject.transform.position = new Vector3(24.57f, 1.35f, Random.Range(9.45f, -6.6f));
+            temp.transform.parent = gameObject.transform;
+            myScore += 2;
+            Ui_Score.SetTrigger("Points");
+        }
+
+        if (other.tag == "Rando4")
+        {
+            //other.transform.parent = transform;
+            //other.gameObject.SetActive(false);
+            GameObject temp = Instantiate(prefabRando2, other.transform.position, other.transform.rotation);
+            other.gameObject.transform.position = new Vector3(24.57f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
@@ -112,6 +140,7 @@ public class BallMovement : MonoBehaviour
             _dirZ = false;
             SoundManager.instance.PlaySound(Random.Range(0,3));
             rotate = new Vector3(10, 0, 0);
+            _ballSpeed += 0.5f;
         }
 
         if(other.tag == "UpBorder")
@@ -137,6 +166,7 @@ public class BallMovement : MonoBehaviour
             _dirX= true;
             _dirZ= true;
             myScore -= 10;
+            _ballSpeed = 2.5f;
         }
     }
 
