@@ -22,6 +22,8 @@ public class BallMovement : MonoBehaviour
     public Animator raquette_anim;
     public Animator Ui_Score;
 
+    public ParticleSystem gainScore;
+
     public int myScore = 0;
     public TMP_Text score;
 
@@ -87,6 +89,7 @@ public class BallMovement : MonoBehaviour
             _dirZ = !_dirZ;
             rotate = new Vector3(-10, 0, 0);
             myScore += 10;
+            gainScore.Play();
             Ui_Score.SetTrigger("Points");
         }
 
