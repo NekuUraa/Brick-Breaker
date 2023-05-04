@@ -89,7 +89,9 @@ public class BallMovement : MonoBehaviour
             _dirZ = !_dirZ;
             rotate = new Vector3(-10, 0, 0);
             myScore += 10;
-            gainScore.Play();
+            ParticleSystem temp = Instantiate(gainScore, other.transform.position, other.transform.rotation);
+            //gainScore.transform.position = other.transform.position;
+            temp.Play();
             Ui_Score.SetTrigger("Points");
         }
 
@@ -143,7 +145,11 @@ public class BallMovement : MonoBehaviour
             _dirZ = false;
             SoundManager.instance.PlaySound(Random.Range(0,3));
             rotate = new Vector3(10, 0, 0);
-            _ballSpeed += 0.5f;
+            
+            if(_ballSpeed <= 20)
+            {
+                _ballSpeed += 0.5f;
+            }
         }
 
         if(other.tag == "UpBorder")
