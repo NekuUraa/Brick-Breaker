@@ -20,6 +20,7 @@ public class BallMovement : MonoBehaviour
     public static bool noLongerHuman = false;
 
     public Animator raquette_anim;
+    public Animator Ui_Score;
 
     public int myScore = 0;
     public TMP_Text score;
@@ -80,6 +81,7 @@ public class BallMovement : MonoBehaviour
             _dirZ = !_dirZ;
             rotate = new Vector3(-10, 0, 0);
             myScore += 10;
+            Ui_Score.SetTrigger("Points");
         }
 
         if(other.tag == "Rando")
@@ -90,6 +92,7 @@ public class BallMovement : MonoBehaviour
             other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
             myScore += 2;
+            Ui_Score.SetTrigger("Points");
         }
 
         if (other.tag == "Rando2")
@@ -100,6 +103,7 @@ public class BallMovement : MonoBehaviour
             other.gameObject.transform.position = new Vector3(-17.03f, 1.35f, Random.Range(9.45f, -6.6f));
             temp.transform.parent = gameObject.transform;
             myScore += 2;
+            Ui_Score.SetTrigger("Points");
         }
 
         if (other.tag == "Player")
