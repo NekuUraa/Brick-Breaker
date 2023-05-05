@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public static bool _gameplay;
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Screen.fullScreen = true;
     }
 
     // Update is called once per frame
@@ -37,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _playerSpeed = 4f;
+        }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            SceneManager.LoadScene("Stage_1");
         }
     }
 }
