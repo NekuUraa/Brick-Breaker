@@ -18,6 +18,12 @@ public class BallMovement : MonoBehaviour
     public GameObject prefabRando2;
     public GameObject prefabRando5;
 
+    public GameObject Rando1;
+    public GameObject Rando2;
+    public GameObject Rando3;
+    public GameObject Rando4;
+    public GameObject Rando5;
+
     public static bool noLongerHuman = false;
 
     public Animator raquette_anim;
@@ -35,6 +41,11 @@ public class BallMovement : MonoBehaviour
         _dirX = true;
         _dirZ = true;
         rotate = new Vector3 (-10,0,0);
+        StartCoroutine(WaitForSpawnRando1());
+        StartCoroutine(WaitForSpawnRando2());
+        StartCoroutine(WaitForSpawnRando3());
+        StartCoroutine(WaitForSpawnRando4());
+        StartCoroutine(WaitForSpawnRando5());
 
     }
 
@@ -202,5 +213,35 @@ public class BallMovement : MonoBehaviour
             collision.transform.parent = transform;
         }*/
     }
+
+    IEnumerator WaitForSpawnRando1()
+    {
+        yield return new WaitForSeconds(5f);
+        Rando1.SetActive(true);
+    }
+
+    IEnumerator WaitForSpawnRando2()
+    {
+        yield return new WaitForSeconds(15f);
+        Rando3.SetActive(true);
+    }
+
+    IEnumerator WaitForSpawnRando3()
+    {
+        yield return new WaitForSeconds(30f);
+        Rando2.SetActive(true);
+    }
+    IEnumerator WaitForSpawnRando4()
+    {
+        yield return new WaitForSeconds(45f);
+        Rando4.SetActive(true);
+    }
+
+    IEnumerator WaitForSpawnRando5()
+    {
+        yield return new WaitForSeconds(60f);
+        Rando5.SetActive(true);
+    }
+
 
 }
