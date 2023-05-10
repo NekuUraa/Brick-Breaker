@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BallMovement : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class BallMovement : MonoBehaviour
     public int myScore = 0;
     public TMP_Text score;
 
+    public int nbrEnemy = 75;
+
 
 
     void Start()
@@ -52,13 +55,16 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(nbrEnemy);
         Move();
         transform.Rotate(rotate);
+        endScore();
         score.SetText(""+myScore);
         if (myScore < 0)
         {
             myScore= 0;
         }
+
     }
 
     public void Move()
@@ -106,6 +112,7 @@ public class BallMovement : MonoBehaviour
             //gainScore.transform.position = other.transform.position;
             temp.Play();
             Ui_Score.SetTrigger("Points");
+            nbrEnemy -= 1;
         }
 
         if(other.tag == "Rando")
@@ -170,7 +177,8 @@ public class BallMovement : MonoBehaviour
             SoundManager.instance.PlaySound(Random.Range(0,3));
             rotate = new Vector3(10, 0, 0) * Time.deltaTime;
             rotate.x += 2f;
-            if(_ballSpeed < 15f)
+            Debug.Log(_ballSpeed < 10f);
+            if(_ballSpeed < 10f)
             {
                 _ballSpeed += 1f;
             }
@@ -205,13 +213,12 @@ public class BallMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void endScore()
     {
-       /* if (collision.gameObject.CompareTag("Enemy"))
+        if(nbrEnemy == 0)
         {
-            Debug.Log("Oui je touche");
-            collision.transform.parent = transform;
-        }*/
+            StartCoroutine(WaitForEndScreen());
+        }
     }
 
     IEnumerator WaitForSpawnRando1()
@@ -241,6 +248,12 @@ public class BallMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(60f);
         Rando5.SetActive(true);
+    }
+
+    IEnumerator WaitForEndScreen()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Stage_1");
     }
 
 
