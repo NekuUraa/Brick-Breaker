@@ -65,7 +65,7 @@ public class BallMovement : MonoBehaviour
         {
             myScore= 0;
         }
-        myNbrEnemy.SetText("Il vous reste "+ nbrEnemy +" brique a detruire");
+        myNbrEnemy.SetText("Il vous reste "+ nbrEnemy +" briques a detruire");
         rememberNbrEnemy();
 
     }
