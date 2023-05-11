@@ -36,6 +36,7 @@ public class BallMovement : MonoBehaviour
     public TMP_Text score;
 
     public int nbrEnemy = 75;
+    public TMP_Text myNbrEnemy;
 
 
 
@@ -64,6 +65,8 @@ public class BallMovement : MonoBehaviour
         {
             myScore= 0;
         }
+        myNbrEnemy.SetText("Il vous reste "+ nbrEnemy +" brique a detruire");
+        rememberNbrEnemy();
 
     }
 
@@ -103,6 +106,8 @@ public class BallMovement : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
+
+            StartCoroutine(AffichageNbrEnemy());
             other.transform.parent = transform;
             _dirZ = !_dirZ;
             rotate = new Vector3(-10, 0, 0) * Time.deltaTime;
@@ -219,6 +224,22 @@ public class BallMovement : MonoBehaviour
         {
             StartCoroutine(WaitForEndScreen());
         }
+    }
+
+    public void rememberNbrEnemy()
+    {
+        if (nbrEnemy == 50)
+        {
+            Debug.Log("Je marche");
+        }
+    }
+
+    IEnumerator AffichageNbrEnemy()
+    {
+
+        myNbrEnemy.enabled = true;
+        yield return new WaitForSeconds(2f);
+        myNbrEnemy.enabled = false;
     }
 
     IEnumerator WaitForSpawnRando1()
