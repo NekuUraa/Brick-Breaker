@@ -4,6 +4,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BallMovement : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class BallMovement : MonoBehaviour
 
     public int nbrEnemy = 75;
     public TMP_Text myNbrEnemy;
+    public GameObject cloud_text;
 
 
 
@@ -99,6 +101,11 @@ public class BallMovement : MonoBehaviour
 
                 transform.position = new Vector3(transform.position.x + (_ballSpeed * Time.deltaTime), transform.position.y, transform.position.z + (_ballSpeed * Time.deltaTime));
 
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                transform.position = new Vector3(0, 1.66f, -0.91f);
             }
     }
 
@@ -216,7 +223,7 @@ public class BallMovement : MonoBehaviour
 
         if (other.tag == "DownBorder")
         {
-            transform.position = new Vector3(0, 1.29f, 0);
+            transform.position = new Vector3(0, 1.66f, -0.91f);
             rotate = new Vector3(-10, 0, 0) * Time.deltaTime;
             _dirX = true;
             _dirZ= true;
@@ -245,8 +252,10 @@ public class BallMovement : MonoBehaviour
     {
 
         myNbrEnemy.enabled = true;
+        cloud_text.SetActive(true);
         yield return new WaitForSeconds(2f);
         myNbrEnemy.enabled = false;
+        cloud_text.SetActive(false);
     }
 
     IEnumerator WaitForSpawnRando1()

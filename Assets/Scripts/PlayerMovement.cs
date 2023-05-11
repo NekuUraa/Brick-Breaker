@@ -46,5 +46,16 @@ public class PlayerMovement : MonoBehaviour
         {
             SceneManager.LoadScene("Stage_1");
         }
+        if (Input.GetKey(KeyCode.T))
+        {
+            StartCoroutine(CoroRestart());
+        }
+
+    }
+
+    IEnumerator CoroRestart()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Title");
     }
 }
