@@ -118,6 +118,7 @@ public class BallMovement : MonoBehaviour
             temp.Play();
             Ui_Score.SetTrigger("Points");
             nbrEnemy -= 1;
+            SoundManager.instance.PlaySound(Random.Range(28,31));
         }
 
         if(other.tag == "Rando")
@@ -129,6 +130,7 @@ public class BallMovement : MonoBehaviour
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
+            SoundManager.instance.PlaySound(Random.Range(4, 10));
         }
 
         if (other.tag == "Rando2")
@@ -140,6 +142,7 @@ public class BallMovement : MonoBehaviour
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
+            SoundManager.instance.PlaySound(Random.Range(11, 19));
         }
 
         if (other.tag == "Rando3")
@@ -151,6 +154,7 @@ public class BallMovement : MonoBehaviour
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
+            SoundManager.instance.PlaySound(Random.Range(4, 10));
         }
 
         if (other.tag == "Rando4")
@@ -162,6 +166,7 @@ public class BallMovement : MonoBehaviour
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
+            SoundManager.instance.PlaySound(Random.Range(11, 19));
         }
 
         if (other.tag == "Rando5")
@@ -173,6 +178,8 @@ public class BallMovement : MonoBehaviour
             temp.transform.parent = gameObject.transform;
             myScore += 2;
             Ui_Score.SetTrigger("Points");
+
+            SoundManager.instance.PlaySound(Random.Range(20, 27));
         }
 
         if (other.tag == "Player")
@@ -182,7 +189,7 @@ public class BallMovement : MonoBehaviour
             SoundManager.instance.PlaySound(Random.Range(0,3));
             rotate = new Vector3(10, 0, 0) * Time.deltaTime;
             rotate.x += 2f;
-            Debug.Log(_ballSpeed < 10f);
+            //Debug.Log(_ballSpeed < 10f);
             if(_ballSpeed < 10f)
             {
                 _ballSpeed += 1f;
@@ -193,7 +200,7 @@ public class BallMovement : MonoBehaviour
         {
             _dirZ = true;
             rotate = new Vector3(-10, 0, 0) * Time.deltaTime;
-            rotate.x += 2f;
+            rotate.x -= 2f;
         }
 
         if (other.tag == "LeftBorder")

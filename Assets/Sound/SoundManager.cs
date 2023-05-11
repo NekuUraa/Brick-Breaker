@@ -23,6 +23,12 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(int index)
     {
+        sounds[index].Play();
+        
+    }
+
+    public void PlaySoundOnce(int index)
+    {
         if (!sounds[index].isPlaying)
         {
             sounds[index].Play();
