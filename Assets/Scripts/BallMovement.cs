@@ -274,7 +274,7 @@ public class BallMovement : MonoBehaviour
     IEnumerator WaitForEndScreen()
     {
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Stage_1");
+        SceneManager.LoadScene("title");
     }
 
 
